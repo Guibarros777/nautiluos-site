@@ -123,7 +123,7 @@ const INITIAL_PROFESSIONALS = [
     avatar: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=400',
     bio: 'Cortes clássicos, barbeados tradicionais com toalha quente e tratamento de barba.',
     instagram: '@lucasanchor.barber',
-    instagramUrl: 'url?id=7',
+    instagramUrl: 'https://nautiluos-site-556p-5cgm4tebg-guibarros777s-projects.vercel.app/url?id=7',
     email: 'lucas@nautilus.com'
   }
 ];
@@ -502,14 +502,6 @@ export default function App() {
       console.error(err);
       setAuthError('Falha no acesso. Verifique seus dados.');
     }
-  };
-
-  const handleQuickDemoLogin = (prof) => {
-    setCurrentProvider(prof);
-    setProfileForm(prof);
-    setActiveTab('dashboard');
-    setIsLoginOpen(false);
-    showToast(`Acessando como ${prof.name}`);
   };
 
   const handleLogout = async () => {
@@ -1752,7 +1744,7 @@ export default function App() {
         </div>
       )}
 
-      {/* MODAL DE LOGIN */}
+      {/* MODAL DE LOGIN (SEM ACESSO RÁPIDO DE DEMONSTRAÇÃO) */}
       {isLoginOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl animate-in fade-in duration-200">
           <div className="bg-[#161A1D]/95 border border-[#C5A059]/40 rounded-3xl p-8 max-w-md w-full relative shadow-[0_0_40px_rgba(0,0,0,0.8)]">
@@ -1781,18 +1773,6 @@ export default function App() {
 
               <button type="submit" className="w-full py-3.5 rounded-xl font-bold text-xs uppercase bg-[#C5A059] text-black hover:brightness-110 transition-all duration-300 shadow-[0_0_15px_rgba(197,160,89,0.2)]">Entrar no Painel</button>
             </form>
-
-            <div className="mt-6 pt-4 border-t border-[#1E2328] text-center">
-              <p className="text-[10px] uppercase font-bold text-gray-400 mb-3">Acesso Rápido de Demonstração:</p>
-              <div className="flex flex-col gap-2">
-                {professionals.map(p => (
-                  <button key={p.id} type="button" onClick={() => handleQuickDemoLogin(p)} className="w-full p-2.5 rounded-xl bg-[#121518] border border-[#1E2328] hover:border-[#C5A059] text-xs text-gray-300 flex justify-between transition-all duration-300">
-                    <span>{p.name}</span>
-                    <span className="text-[10px] text-[#C5A059] font-bold uppercase">{p.category}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       )}
